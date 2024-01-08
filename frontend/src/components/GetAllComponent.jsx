@@ -117,7 +117,6 @@ function GetAllComponent() {
               placeholder="Search by Name"
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
-              className="form-control me-2"
             />
             <Button
               variant="primary"
@@ -173,15 +172,36 @@ function GetAllComponent() {
               </tbody>
             </Table>
           ) : (
-            <p className="mt-3">No items available.</p>
+            <p>No items available.</p>
           )}
         </Card.Body>
       </Card>
       <Modal show={showConfirmModal} onHide={handleCloseConfirmModal} centered>
-        {/* ... (Your existing Modal code) */}
+        <Modal.Header closeButton>
+          <Modal.Title>Confirm Deletion</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          Are you sure you want to delete this item?
+        </Modal.Body>
+        <Modal.Footer>
+          <Button variant="secondary" onClick={handleCloseConfirmModal}>
+            Cancel
+          </Button>
+          <Button variant="danger" onClick={handleDelete}>
+            Delete
+          </Button>
+        </Modal.Footer>
       </Modal>
       <Modal show={showModal} onHide={handleCloseModal} centered>
-        {/* ... (Your existing Modal code) */}
+        <Modal.Header closeButton>
+          <Modal.Title>Item Deleted</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>Item has been successfully deleted.</Modal.Body>
+        <Modal.Footer>
+          <Button variant="secondary" onClick={handleCloseModal}>
+            Close
+          </Button>
+        </Modal.Footer>
       </Modal>
     </Container>
   );
